@@ -19,7 +19,7 @@ const Topbar = (props: Props) => {
             <SignOutButton>
               <div className="flex cursor-pointer">
                 <Image
-                  src="/assets/logoutt.png"
+                  src="/assets/logout.svg"
                   alt="logout"
                   width={24}
                   height={24}
@@ -28,7 +28,13 @@ const Topbar = (props: Props) => {
             </SignOutButton>
           </SignedIn>
         </div>
-        <OrganizationSwitcher />
+        <OrganizationSwitcher
+          appearance={{
+            elements: {
+              organizationSwitcherTrigger: 'px-2 py-4',
+            },
+          }}
+        />
       </div>
     </nav>
   );
