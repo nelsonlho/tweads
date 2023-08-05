@@ -2,6 +2,7 @@ import { OrganizationSwitcher, SignOutButton, SignedIn } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { dark } from '@clerk/themes';
 
 type Props = {};
 
@@ -30,6 +31,7 @@ const Topbar = (props: Props) => {
         </div>
         <OrganizationSwitcher
           appearance={{
+            baseTheme: dark,
             elements: {
               organizationSwitcherTrigger: 'px-2 py-4',
             },
