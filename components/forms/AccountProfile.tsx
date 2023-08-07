@@ -144,6 +144,7 @@ function AccountProfile({ user, btnTitle }: Props) {
                   onChange={(e) => handleImage(e, field.onChange)}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -164,6 +165,7 @@ function AccountProfile({ user, btnTitle }: Props) {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -184,6 +186,7 @@ function AccountProfile({ user, btnTitle }: Props) {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -204,6 +207,7 @@ function AccountProfile({ user, btnTitle }: Props) {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
