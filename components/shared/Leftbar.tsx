@@ -1,17 +1,17 @@
 'use client';
 
-import { sidebarLinks } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { SignOutButton, SignedIn } from '@clerk/nextjs';
+import { SignOutButton, SignedIn, useAuth } from '@clerk/nextjs';
 
-type Props = {};
+import { sidebarLinks } from '@/constants';
 
-const Leftbar = (props: Props) => {
+const LeftSidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
+
+  const { userId } = useAuth();
 
   return (
     <section className="custom-scrollbar leftsidebar">
@@ -20,11 +20,14 @@ const Leftbar = (props: Props) => {
           const isActive =
             (pathname.includes(link.route) && link.route.length > 1) ||
             pathname === link.route;
+
+          if (link.route === '/profile') link.route = `${link.route}/${userId}`;
+
           return (
             <Link
               href={link.route}
               key={link.label}
-              className={`leftsidebar_link ${isActive && 'bg-primary-500'}`}
+              className={`leftsidebar_link ${isActive && 'bg-primary-500 '}`}
             >
               <Image
                 src={link.imgURL}
@@ -32,11 +35,13 @@ const Leftbar = (props: Props) => {
                 width={24}
                 height={24}
               />
+
               <p className="text-light-1 max-lg:hidden">{link.label}</p>
             </Link>
           );
         })}
       </div>
+
       <div className="mt-10 px-6">
         <SignedIn>
           <SignOutButton signOutCallback={() => router.push('/sign-in')}>
@@ -47,7 +52,8 @@ const Leftbar = (props: Props) => {
                 width={24}
                 height={24}
               />
-              <p className="text-light-1 max-lg:hidden">Logout</p>
+
+              <p className="text-light-2 max-lg:hidden">Logout</p>
             </div>
           </SignOutButton>
         </SignedIn>
@@ -56,4 +62,4 @@ const Leftbar = (props: Props) => {
   );
 };
 
-export default Leftbar;
+export default LeftSidebar;
