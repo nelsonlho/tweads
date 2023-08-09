@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs';
 
-// import Comment from "@/components/forms/Comment";
+import Comment from '@/components/forms/Comment';
 import ThreadCard from '@/components/cards/ThreadCard';
 
 import { fetchUser } from '@/lib/actions/user.actions';
@@ -35,15 +35,15 @@ async function page({ params }: { params: { id: string } }) {
         />
       </div>
 
-      {/* <div className='mt-7'> */}
-      {/* <Comment
+      <div className="mt-7">
+        <Comment
           threadId={params.id}
           currentUserImg={user.imageUrl}
           currentUserId={JSON.stringify(userInfo._id)}
-        /> */}
-      {/* </div> */}
+        />
+      </div>
 
-      {/* <div className='mt-10'>
+      <div className="mt-10">
         {thread.children.map((childItem: any) => (
           <ThreadCard
             key={childItem._id}
@@ -58,7 +58,7 @@ async function page({ params }: { params: { id: string } }) {
             isComment
           />
         ))}
-      </div> */}
+      </div>
     </section>
   );
 }
