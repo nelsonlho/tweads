@@ -153,7 +153,6 @@ function ThreadCard({
             {formatDateString(createdAt)}
             {community && ` - ${community.name} Community`}
           </p>
-
           <Image
             src={community.image}
             alt={community.name}

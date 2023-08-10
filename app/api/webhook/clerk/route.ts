@@ -37,7 +37,7 @@ type Event = {
 export const POST = async (request: Request) => {
   const payload = await request.json();
   const header = headers();
-
+  console.log('is post');
   const heads = {
     'svix-id': header.get('svix-id'),
     'svix-timestamp': header.get('svix-timestamp'),
@@ -46,8 +46,13 @@ export const POST = async (request: Request) => {
 
   // Activitate Webhook in the Clerk Dashboard.
   // After adding the endpoint, you'll see the secret on the right side.
-  const wh = new Webhook(process.env.NEXT_CLERK_WEBHOOK_SECRET || '');
+  const secret =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_CLERK_WEBHOOK_SECRET
+      : process.env.NEXT_CLERK_WEBHOOK_SECRET_DEV;
+  const wh = new Webhook(secret ?? '');
 
+  console.log({ wh });
   let evnt: Event | null = null;
 
   try {
