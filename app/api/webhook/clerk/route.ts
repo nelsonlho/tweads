@@ -61,6 +61,7 @@ export const POST = async (request: Request) => {
 
   const eventType: EventType = evnt?.type!;
 
+  console.log({ eventType });
   // Listen organization creation event
   if (eventType === 'organization.created') {
     // Resource: https://clerk.com/docs/reference/backend-api/tag/Organizations#operation/CreateOrganization
